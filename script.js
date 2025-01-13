@@ -5,6 +5,11 @@ import GUI from 'lil-gui';
 import { metalness } from 'three/tsl';
 import { RGBELoader, TextGeometry } from 'three/examples/jsm/Addons.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
+// import { Font } from 'three/examples/jsm/loaders/FontLoader';
+// import helvetikerFont from './src/assets/fonts/helvetiker_bold.typeface.json'
+import helvetikerFont from 'three/examples/fonts/helvetiker_bold.typeface.json?url'
+import image from './src/assets/textures/matcaps/8.png'
+
 
 const gui = new GUI();
 
@@ -26,7 +31,7 @@ scene.add(camera)
 
 
 // const texture = new THREE.TextureLoader().load('./src/assets/textures/door/normal.jpg')
-const planeTexture = new THREE.TextureLoader().load('./src/assets/textures/matcaps/8.png')
+const planeTexture = new THREE.TextureLoader().load(image)
 const textMaterial=new THREE.MeshMatcapMaterial()
 textMaterial.matcap=planeTexture
 
@@ -53,7 +58,7 @@ const loader = new FontLoader();
 
 
 loader.load(
-    './src/assets/fonts/helvetiker_bold.typeface.json',(font)=>{
+    helvetikerFont,(font)=>{
         let word = { text: 'Prabhat Kashyap' }; // Initial text
         let textMesh;
         let textGeometry;
@@ -94,12 +99,12 @@ loader.load(
 
 const torus=new THREE.TorusGeometry(0.3,0.2,16,100)
 
-for(let i=0;i<100;i++){
+for(let i=0;i<300;i++){
     const torusMesh=new THREE.Mesh(torus,textMaterial)
 
-    torusMesh.position.x=(Math.random()-0.5)*10
-    torusMesh.position.y=(Math.random()-0.5)*10
-    torusMesh.position.z=(Math.random()-0.5)*10
+    torusMesh.position.x=(Math.random()-0.5)*20
+    torusMesh.position.y=(Math.random()-0.5)*20
+    torusMesh.position.z=(Math.random()-0.5)*20
     torusMesh.rotation.x=Math.random()*Math.PI
     torusMesh.rotation.y=Math.random()*Math.PI
 
